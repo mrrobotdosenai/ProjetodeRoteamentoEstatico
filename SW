@@ -1,0 +1,99 @@
+SW-01
+enable
+configure terminal
+hostname SW-01
+banner motd "SOMENTE PESSOAL AUTORIZADO"
+enable secret SenhadaEnable
+service password-encryption
+ip domain-name rede1.Local
+crypto key generate rsa general-key modulus 1024
+username administrador privilege 15 secret SenhaAdmin
+username estagiario privilege 1 secret SenhaEst
+line console 0
+password SenhadaConsole
+login
+exit
+line vty 0 15
+transport input ssh
+login local
+exec-timeout 5
+exit
+ip default-gateway 192.168.1.1
+interface vlan1 
+ip address 192.168.255.254 255.255.255.224
+do wr
+===============================================================================================================
+SW-02
+enable
+configure terminal
+hostname SW-02
+banner motd "SOMENTE PESSOAL AUTORIZADO"
+enable secret SenhadaEnable
+service password-encryption
+ip domain-name rede2.Local
+crypto key generate rsa general-key modulus 1024
+username administrador privilege 15 secret SenhaAdmin
+username estagiario privilege 1 secret SenhaEst
+line console 0
+password SenhadaConsole
+login
+exit
+line vty 0 15
+transport input ssh
+login local
+exec-timeout 5
+exit
+ip default-gateway 10.40.10.1
+interface vlan1 
+ip address 10.40.255.254 255.255.240.0
+do wr
+==============================================================================================================
+SW-03
+enable
+configure terminal
+hostname SW-03
+banner motd "SOMENTE PESSOAL AUTORIZADO"
+enable secret SenhadaEnable
+service password-encryption
+ip domain-name rede3.Local
+crypto key generate rsa general-key modulus 1024
+username administrador privilege 15 secret SenhaAdmin
+username estagiario privilege 1 secret SenhaEst
+line console 0
+password SenhadaConsole
+login
+exit
+line vty 0 15
+transport input ssh
+login local
+exec-timeout 5
+exit
+ip default-gateway 192.168.0.1
+interface vlan1 
+ip address 192.168.255.254 255.255.255.128
+do wr
+=============================================================================================================
+SW-04
+enable
+configure terminal
+hostname SW-04
+banner motd "SOMENTE PESSOAL AUTORIZADO"
+enable secret SenhadaEnable
+service password-encryption
+ip domain-name rede4.Local
+crypto key generate rsa general-key modulus 1024
+username administrador privilege 15 secret SenhaAdmin
+username estagiario privilege 1 secret SenhaEst
+line console 0
+password SenhadaConsole
+login
+exit
+line vty 0 15
+transport input ssh
+login local
+exec-timeout 5
+exit
+ip default-gateway 172.16.42.1
+interface vlan1 
+ip address 172.16.255.254 255.255.254.0
+do wr
